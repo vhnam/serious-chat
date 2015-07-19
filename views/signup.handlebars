@@ -21,6 +21,7 @@
 				<md-icon md-svg-src="img/key.svg"></md-icon>
 				<input id="user-confirm-password" ng-model="user.confirmPassword" name="ConfirmPassword" type="password" placeholder="Confirm Password" ng-required="true" autocomplete="off" spellcheck="false" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{6,}$">
 			</md-input-container>
+			<input type="hidden" ng-value="user.hash" name="Hash">
 			<md-button class="md-raised btn-sign-up">Sign Up</md-button>
 			<h6 class="error" ng-show="error != undefined">[[error]]</h6>
 		</form>

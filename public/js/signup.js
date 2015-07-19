@@ -22,7 +22,9 @@ angular.module('serious-chat', ['ngMaterial'])
 			}
 
 			var rusha = new Rusha();
-			$scope.user.password = rusha.digest($scope.user.password);
+			$scope.user.hash = rusha.digest($scope.user.password);
+
+			$scope.user.hash = md5($scope.user.hash);
 		};
 	}])
 ;

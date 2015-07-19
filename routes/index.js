@@ -30,13 +30,14 @@ router.get('/signup', function(req, res, next) {
 			'components/angular-animate/angular-animate.js',
 			'components/angular-material/angular-material.js',
 			'components/rusha/rusha.min.js',
+			'components/blueimp-md5/js/md5.min.js',
 			'js/signup.js'
 		]
 	});
 });
 
 router.post('/signup', function(req, res, next) {
-	console.log(req.body.Password);
+	console.log(req.body.Hash);
 });
 
 module.exports = router;
