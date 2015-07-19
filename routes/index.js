@@ -29,9 +29,14 @@ router.get('/signup', function(req, res, next) {
 			'components/angular-aria/angular-aria.js',
 			'components/angular-animate/angular-animate.js',
 			'components/angular-material/angular-material.js',
+			'components/rusha/rusha.min.js',
 			'js/signup.js'
 		]
 	});
+});
+
+router.post('/signup', function(req, res, next) {
+	console.log(req.body.Password);
 });
 
 module.exports = router;

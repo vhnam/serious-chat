@@ -1,6 +1,7 @@
 var express = require('express'),
 	logger = require('morgan'),
 	path = require('path'),
+	bodyParser = require('body-parser'),
 	exphbs = require('express-handlebars');
 
 var app = express();
@@ -10,8 +11,17 @@ app.set('views', './views');
 app.set('view engine', 'handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 
+// set response status for development
 app.use(logger('dev'));
+
+// set static folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+// to support JSON-encoded bodies
+app.use(bodyParser.json());
+
+// to support URL-encoded bodies
+app.use(bodyParser.urlencoded({	extended: true }));
 
 // routing setup
 require('./routes/routes')(app);
