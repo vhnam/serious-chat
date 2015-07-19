@@ -40,7 +40,18 @@ if (app.get('env') === 'development') {
 		res.status(err.status || 500);
 		res.render('error', {
 			message: err.message,
-			error: err
+			error: err,
+			'stylesheets': [
+				'components/angular-material/angular-material.min.css',
+				'css/error.css'
+			],
+			'scripts': [
+				'components/angular/angular.min.js',
+				'components/angular-aria/angular-aria.js',
+				'components/angular-animate/angular-animate.js',
+				'components/angular-material/angular-material.js',
+				'js/error.js'
+			]
 		});
 	});
 } else {

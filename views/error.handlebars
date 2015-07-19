@@ -1,2 +1,17 @@
-<h1>{{message}}</h1>
-<h2>{{error.status}}</h2>
+<header>
+	<a href="/">
+		<md-button class="back-arrow" class="md-icon-button" aria-label="Back">
+			<md-icon md-svg-icon="img/back.svg"></md-icon>
+		</md-button>
+	</a>
+	<h1 class="title">Error</h1>
+</header>
+<section>
+	<article>
+		<img src="img/serious-face.png" alt="Serious Youth">
+		<div class="error-messages">
+			<h2>{{error.status}}</h2>
+			<h2>{{message}}</h2>
+		</div>
+	</article>
+</section>
