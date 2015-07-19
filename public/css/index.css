@@ -1,0 +1,111 @@
+header {
+	width: 100%;
+	height: 96px;
+	font-size: 1.2em;
+	background-color: #303f9f;
+	position: relative;
+}
+
+header > nav {
+	position: absolute;
+	right: 32px;
+	top: 22px;
+}
+
+header > nav > ul {
+	display: inline-flex;
+	margin: 0;
+}
+
+header > nav > ul > li > a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: 400;
+	font-size: 16px;
+	font-size: 1.2rem;
+}
+
+header > nav > ul > li {
+	margin-left: 16px;
+	padding: 16px;
+	border-radius: 3px;
+	-webkit-transition: background-color 0.3s ease;
+	-moz-transition: background-color 0.3s ease;
+	transition: background-color 0.3s ease;
+}
+
+header > nav > ul > li:hover {
+	cursor: pointer;
+	background-color: #283593;
+}
+
+.main-content {
+	position: relative;
+	height: calc(100vh - 96px);
+	background-color: #3f51b5;
+}
+
+.main-content > article,
+.sub-content > article {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+}
+
+.main-content > article {
+	top: 40%;
+}
+
+.main-content > article > .brand-name {
+	margin: 0;
+	font-size: 39px;
+	font-size: 3rem;
+	color: #fff;
+	font-weight: 400;
+}
+
+.scroll-down {
+	width: 44px;
+	height: 44px;
+	display: block;
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+	position: absolute;
+	bottom: 60px;
+	left: calc(50vw - 22px);
+	background: url("../img/scroll-down.svg") no-repeat center center;
+}
+
+.scroll-down:hover {
+	cursor: pointer;
+}
+
+.sub-content {
+	position: relative;
+	height: 100vh;
+	background-color: #fff;
+}
+
+.sub-content > article {
+	top: 30%;
+}
+
+.sub-content > article > h2 {
+	font-weight: 400;
+	color: #3f51b5;
+	font-size: 26px;
+	font-size: 2rem;
+}
+
+.btn-sign-up {
+	position: fixed;
+	bottom: 32px;
+	right: 32px;
+}
+
+@media(max-height: 320px) {
+	.scroll-down {
+		display: none;
+	}
+}

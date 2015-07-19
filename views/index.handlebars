@@ -1,0 +1,29 @@
+<header>
+	<nav>
+		<ul>
+			<li>
+				<a href="signin">Sign In</a>
+			</li>
+			<li>
+				<a href="about">About</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+<main ng-controller="MainController">
+	<section class="main-content" >
+		<article>
+			<h1 class="brand-name">Serious Chat</h1>
+		</article>
+		<div class="scroll-down" ng-click="scrollDown($event)">Scroll Down</div>
+	</section>
+	<section class="sub-content" id="sub-content">
+		<article>
+			<img src="img/serious-face.png" alt="Serious Youth">
+			<h2>Why so serious?</h2>
+		</article>
+	</section>
+	<md-button class="btn-sign-up md-fab" aria-label="Sign Up" href="/signup">
+	    <md-icon md-svg-src="img/signup.svg"></md-icon>
+	</md-button>
+</main>

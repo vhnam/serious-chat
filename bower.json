@@ -1,0 +1,12 @@
+{
+  "name": "serious-chat",
+  "version": "0.0.2",
+  "description": "The messaging application for Serious Youth.",
+  "authors": "Nam Vo <vhnam2504@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.3",
+    "angular-material": "~0.10.0",
+  }
+}
