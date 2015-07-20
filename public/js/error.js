@@ -2,6 +2,6 @@
 
 (function() {
 
-angular.module('serious-chat', ['ngMaterial'])
+angular.module('serious-chat', ['ngMaterial']);
 
 })();

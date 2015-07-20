@@ -1,8 +1,8 @@
 # Serious Chat
 
 ## Package Management
-* [npm](https://www.npmjs.com/)
-* [Bower](http://bower.io/)
+* [npm](https://www.npmjs.com/) - Using for Server-side.
+* [Bower](http://bower.io/) - Using for Client-side.
 
 ## Technology
 * [Express 4](http://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js.
@@ -13,6 +13,7 @@
 ## Middleware
 * [Express Handlebars](https://github.com/ericf/express-handlebars) - A Handlebars view engine for Express which doesn't suck.
 * [Rusha](https://github.com/srijs/rusha) - A high-performance pure-javascript SHA1 implementation suitable for large binary data.
+* [blueimp-md5](https://github.com/blueimp/JavaScript-MD5) - JavaScript MD5 implementation. Compatible with server-side environments like node.js, module loaders like RequireJS and all web browsers.
 
 ## Standard
 * Email - [RFC 5322 Official Standard](http://www.ietf.org/rfc/rfc5322.txt)

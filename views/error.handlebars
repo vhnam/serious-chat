@@ -7,11 +7,17 @@
 	<h1 class="title">Error</h1>
 </header>
 <section>
-	<article>
-		<img src="img/serious-face.png" alt="Serious Youth">
-		<div class="error-messages">
-			<h2>{{error.status}}</h2>
-			<h2>{{message}}</h2>
-		</div>
-	</article>
+	{{#if error}}
+		<article class="acticle-stack">
+			<h2>Status code: <span class="status-code">{{error.status}}</span></h2>
+			<pre>{{error.stack}}</pre>
+		</article>
+	{{else}}
+		<article class="article-error">
+			<img src="img/serious-face.png" alt="Serious Youth">
+			<div class="error-messages">
+				<h2>{{message}}</h2>
+			</div>
+		</article>
+	{{/if}}
 </section>

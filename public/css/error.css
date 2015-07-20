@@ -28,7 +28,7 @@ section {
 	background-color: #fff;
 }
 
-article {
+.article-error {
 	width: 280px;
 	position: absolute;
 	top: 20%;
@@ -38,13 +38,27 @@ article {
 	text-align: center;
 }
 
-article .error-messages {
+.article-error .error-messages {
 	margin: 16px;
 	color: #f44336;
 }
 
-article .error-messages h2 {
+.article-error .error-messages h2 {
 	font-size: 16px;
 	font-size: 1.2rem;
 	margin-bottom: 8px;
+}
+
+.acticle-stack {
+	margin: 32px;
+}
+
+.acticle-stack .status-code {
+	color: #f44336;
+	font-size: 16px;
+	font-size: 1.2rem;
+}
+
+.acticle-stack pre {
+	margin-top: 16px;
 }
