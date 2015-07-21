@@ -1,0 +1,25 @@
+header {
+	display: inline-flex;
+	background-color: #f44336;
+	height: 64px;
+	width: 100%;
+}
+
+header .menu {
+	margin: 16px;
+	min-width: 16px;
+	line-height: 0;
+}
+
+header .menu > md-icon {
+	color: #fff;
+}
+
+header .brand-name {
+	padding: 0;
+	margin: 16px 0;
+	color: #fff;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 1.5em;
+}

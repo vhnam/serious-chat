@@ -3,9 +3,14 @@ var express = require('express'),
 	md5 = require('blueimp-md5').md5,
 	Sequelize = require('sequelize'),
 	router = express.Router(),
+	session = require('express-session'),
 	models = require('../models');
 
 router.get('/', function(req, res, next) {
+	if (req.session.uid) {
+		res.redirect('/app');
+	}
+
 	res.render('index', {
 		'stylesheets': [
 			'components/angular-material/angular-material.min.css',
@@ -53,8 +58,52 @@ router.post('/signup', function(req, res, next) {
 		password: hash,
 		fullname: 'Anonymous'
 	}).then(function() {
-		res.redirect('/app');
+		res.redirect('/signin');
 	});
+});
+
+router.get('/signin', function(req, res, next) {
+	res.render('signin', {
+		'stylesheets': [
+			'components/angular-material/angular-material.min.css',
+			'css/signin.css'
+		],
+		'scripts': [
+			'components/angular/angular.min.js',
+			'components/angular-aria/angular-aria.js',
+			'components/angular-animate/angular-animate.js',
+			'components/angular-material/angular-material.js',
+			'components/rusha/rusha.min.js',
+			'components/blueimp-md5/js/md5.min.js',
+			'js/signin.js'
+		]
+	});
+});
+
+router.post('/signin', function(req, res, next) {
+	var email = req.body.email,
+		hash = req.body.hash,
+		rusha = new Rusha();
+
+	hash = rusha.digest('5h3h53ui4h5u' + hash + '34b42j3hb42jh');
+	hash = md5('543bhjb53gf' + hash + '324kj234jh32kjh');
+
+	models.User.findOne({
+		where: {
+			email: email,
+			password: hash
+		},
+		attributes: ['id', 'fullname']
+	}).then(function(user) {
+		if (user === null) {
+			res.redirect('/signin');
+		} else {
+			req.session.uid = user.dataValues.id;
+			req.session.fullname = user.dataValues.fullname;
+			req.session.email = email;
+			res.redirect('/app');
+		}
+	})
 });
 
 module.exports = router;

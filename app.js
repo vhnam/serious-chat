@@ -2,6 +2,7 @@ var express = require('express'),
 	logger = require('morgan'),
 	path = require('path'),
 	bodyParser = require('body-parser'),
+	session = require('express-session'),
 	exphbs = require('express-handlebars');
 
 var app = express();
@@ -22,6 +23,13 @@ app.use(bodyParser.json());
 
 // to support URL-encoded bodies
 app.use(bodyParser.urlencoded({	extended: true }));
+
+// to support session
+app.use(session({
+	resave: true,
+	secret: '300743fc860c3699224630a9282adf954cf65858ba1131061b42ffcb4dfc110c',
+	saveUninitialized: false
+}));
 
 // routing setup
 require('./routes/routes')(app);
