@@ -2,7 +2,8 @@ var express = require('express'),
 	Rusha = require('rusha'),
 	md5 = require('blueimp-md5').md5,
 	Sequelize = require('sequelize'),
-	router = express.Router();
+	router = express.Router(),
+	models = require('../models');
 
 router.get('/', function(req, res, next) {
 	res.render('index', {
@@ -46,6 +47,14 @@ router.post('/signup', function(req, res, next) {
 
 	hash = rusha.digest('5h3h53ui4h5u' + hash + '34b42j3hb42jh');
 	hash = md5('543bhjb53gf' + hash + '324kj234jh32kjh');
+
+	models.User.create({
+		email: email,
+		password: hash,
+		fullname: 'Anonymous'
+	}).then(function() {
+		res.redirect('/app');
+	});
 });
 
 module.exports = router;
