@@ -15,18 +15,28 @@ router.get('/', function(req, res, next) {
 		res.render('app/index', {
 			'user': user,
 			'stylesheets': [
-				'components/angular-material/angular-material.min.css',
-				'css/app/index.css'
+				'/components/angular-material/angular-material.min.css',
+				'/css/app/index.css'
 			],
 			'scripts': [
-				'components/jquery/dist/jquery.min.js',
-				'components/angular/angular.min.js',
-				'components/angular-aria/angular-aria.js',
-				'components/angular-animate/angular-animate.js',
-				'components/angular-material/angular-material.js',
-				'js/app/index.js'
+				'/components/jquery/dist/jquery.min.js',
+				'/components/angular/angular.min.js',
+				'/components/angular-aria/angular-aria.js',
+				'/components/angular-animate/angular-animate.js',
+				'/components/angular-material/angular-material.js',
+				'/js/app/index.js'
 			]
 		});
+	});
+});
+
+router.get('/signout', function(req, res, next) {
+	req.session.destroy(function(err) {
+		if (err) {
+			return next(err);
+		}
+
+		res.redirect('/');
 	});
 });
 

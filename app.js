@@ -64,15 +64,15 @@ app.use(function(err, req, res, next) {
 		message: err.message,
 		error: ('development' === app.get('env')) ? err : {},
 		stylesheets: [
-			'components/angular-material/angular-material.min.css',
-			'css/error.css'
+			'/components/angular-material/angular-material.min.css',
+			'/css/error.css'
 		],
 		scripts: [
-			'components/angular/angular.min.js',
-			'components/angular-aria/angular-aria.js',
-			'components/angular-animate/angular-animate.js',
-			'components/angular-material/angular-material.js',
-			'js/error.js'
+			'/components/angular/angular.min.js',
+			'/components/angular-aria/angular-aria.js',
+			'/components/angular-animate/angular-animate.js',
+			'/components/angular-material/angular-material.js',
+			'/js/error.js'
 		]
 	});
 });

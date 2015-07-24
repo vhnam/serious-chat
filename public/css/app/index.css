@@ -83,9 +83,8 @@ md-sidenav {
 .menu-nickname {
 	font-weight: 700;
 }
-
-.menu-content {
-	height: 100%;
+.menu-sidenav md-content {
+	padding: 16px;
 }
 
 .main-header-search {
@@ -125,6 +124,25 @@ md-sidenav {
 	height: 36px;
 	font-size: 16px;
 	color: #fff;
+	outline: none;
+	border: 0;
+    overflow: hidden;
+}
+
+.main-header-search-keyword::-webkit-input-placeholder {
+   color: #ffcdd2;
+}
+
+.main-header-search-keyword:-moz-placeholder { /* Firefox 18- */
+   color: #ffcdd2;
+}
+
+.main-header-search-keyword::-moz-placeholder {  /* Firefox 19+ */
+   color: #ffcdd2;
+}
+
+.main-header-search-keyword:-ms-input-placeholder {
+   color: #ffcdd2;
 }
 
 @media(max-width: 640px) {

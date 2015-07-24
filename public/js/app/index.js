@@ -32,6 +32,12 @@ angular.module('serious-chat', ['ngMaterial'])
 		$scope.closeMenu = function() {
 			$mdSidenav('aside-menu').close();
 		};
+
+		$scope.move = function(item) {
+			if ('Sign out' === item) {
+				window.location.href = 'app/signout';
+			}
+		}
 	}])
 ;
 

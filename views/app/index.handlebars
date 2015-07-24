@@ -19,7 +19,13 @@
 					</div>
 				</md-toolbar>
 				<md-content layout-padding>
-					SIDENAV
+					<md-menu-content width="1">
+						<md-menu-item ng-repeat="item in ['Profile', 'Friends', 'Sign out']">
+							<md-button ng-click="move(item)">
+								[[item]]
+							</md-button>
+						</md-menu-item>
+					</md-menu-content>
 				</md-content>
 			</md-sidenav>
 		</aside>
