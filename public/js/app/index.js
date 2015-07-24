@@ -12,6 +12,17 @@ angular.module('serious-chat', ['ngMaterial'])
 	})
 
 	.controller('mainController', ['$scope', '$mdSidenav', function($scope, $mdSidenav) {
+
+		$scope.search = function() {
+			$scope.isSearching = true;
+			$('#search-keyword').show().focus();
+		}
+
+		$scope.back = function() {
+			$scope.isSearching = false;
+			$('#search-keyword').hide();
+		}
+
 		$scope.showMenu = function() {
 			$mdSidenav('aside-menu').toggle();
 		};

@@ -56,7 +56,7 @@ router.post('/signup', function(req, res, next) {
 	models.User.create({
 		email: email,
 		password: hash,
-		fullname: 'Anonymous'
+		nickname: 'Anonymous'
 	}).then(function() {
 		res.redirect('/signin');
 	});
@@ -93,17 +93,15 @@ router.post('/signin', function(req, res, next) {
 			email: email,
 			password: hash
 		},
-		attributes: ['id', 'fullname']
+		attributes: ['id']
 	}).then(function(user) {
 		if (user === null) {
 			res.redirect('/signin');
 		} else {
 			req.session.uid = user.dataValues.id;
-			req.session.fullname = user.dataValues.fullname;
-			req.session.email = email;
 			res.redirect('/app');
 		}
-	})
+	});
 });
 
 module.exports = router;

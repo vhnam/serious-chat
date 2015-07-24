@@ -8,10 +8,14 @@
 					</md-button>
 				</md-toolbar>
 				<md-toolbar class="menu-background">
-					<img src="img/serious-face.png" alt="Serious Youth" class="menu-avatar">
+					{{#if user.avatar}}
+						<img src="img/users/{{user.avatar}}" alt="{{user.nickname}}" class="menu-avatar">
+					{{else}}
+						<img src="img/anonymous-face.png" alt="Serious Youth" class="menu-avatar">
+					{{/if}}
 					<div class="menu-info">
-						<h1 class="menu-nickname">Anonymous</h1>
-						<h2>anonymous@gmail.com</h2>
+						<h1 class="menu-nickname">{{user.nickname}}</h1>
+						<h2>{{user.email}}</h2>
 					</div>
 				</md-toolbar>
 				<md-content layout-padding>
@@ -20,11 +24,18 @@
 			</md-sidenav>
 		</aside>
 		<md-content flex layout-padding>
-			<header>
-				<md-button class="menu" class="md-icon-button" aria-label="Back" ng-click="showMenu()">
+			<header class="main-header" ng-class="{isSearching: isSearching}">
+				<md-button class="menu" class="md-icon-button" aria-label="Menu" ng-click="showMenu()">
 					<md-icon md-svg-icon="img/menu.svg"></md-icon>
 				</md-button>
+				<md-button class="md-icon-button main-header-back" aria-label="Back" ng-click="back()">
+					<md-icon md-svg-icon="img/back.svg"></md-icon>
+				</md-button>
+				<md-button class="md-icon-button main-header-search" aria-label="Search" ng-click="search()">
+					<md-icon md-svg-icon="img/search.svg"></md-icon>
+				</md-button>
 				<h2 class="brand-name">Serious Chat</h2>
+				<input id="search-keyword" type="text" autocomplete="off" spellcheck="false" placeholder="Search" autofocus class="main-header-search-keyword">
 			</header>
 		</md-content>
 	</section>
