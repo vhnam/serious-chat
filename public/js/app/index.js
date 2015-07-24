@@ -11,8 +11,16 @@ angular.module('serious-chat', ['ngMaterial'])
 		;
 	})
 
-	.controller('mainController', ['$scope', function($scope) {
-		
+	.controller('mainController', ['$scope', '$mdSidenav', function($scope, $mdSidenav) {
+		$scope.showMenu = function() {
+			$mdSidenav('aside-menu').toggle();
+		};
+	}])
+
+	.controller('asideMenuController', ['$scope', '$mdSidenav', function($scope, $mdSidenav) {
+		$scope.closeMenu = function() {
+			$mdSidenav('aside-menu').close();
+		};
 	}])
 ;
 

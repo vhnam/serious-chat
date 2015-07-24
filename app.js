@@ -62,7 +62,7 @@ app.use(function(err, req, res, next) {
 	res.status(err.status || 500);
 	res.render('error', {
 		message: err.message,
-		error: (app.get('env') === 'development') ? err : {},
+		error: ('development' === app.get('env')) ? err : {},
 		stylesheets: [
 			'components/angular-material/angular-material.min.css',
 			'css/error.css'

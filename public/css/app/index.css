@@ -6,6 +6,7 @@ header {
 }
 
 header .menu {
+	display: none;
 	margin: 16px;
 	min-width: 16px;
 	line-height: 0;
@@ -17,9 +18,84 @@ header .menu > md-icon {
 
 header .brand-name {
 	padding: 0;
-	margin: 16px 0;
+	margin: 16px;
 	color: #fff;
 	font-weight: 400;
 	font-size: 24px;
 	line-height: 1.5em;
+}
+
+md-sidenav {
+	height: 100vh;
+}
+
+[layout-padding] {
+	padding: 0;
+}
+
+.menu-sidenav {
+	box-shadow: 0 64px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.menu-header {
+	background-color: #f44336;
+	position: relative;
+}
+
+.menu-background {
+	padding: 32px 16px;
+	background-color: #E8EAF6;
+	background-image: url(/img/background.png);
+	background-size: cover;
+}
+
+.menu-close {
+	display: none;
+	width: 36px;
+	height: 36px;
+	min-width: 36px;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+
+.menu-close > md-icon {
+	color: #fff;
+}
+
+.menu-info {
+	margin-top: 8px;
+	font-size: 14px;
+	color: #212121;
+	line-height: 1.42857;
+}
+
+.menu-avatar {
+	height: 64px;
+	width: 64px;
+	border-radius: 500px;
+	background-color: #fff;
+	border: 1px solid #f9f9f9;
+}
+
+.menu-nickname {
+	font-weight: 700;
+}
+
+.menu-content {
+	height: 100%;
+}
+
+@media(max-width: 640px) {
+	header .menu {
+		display: block;
+	}
+
+	header .brand-name {
+		margin: 16px 0;
+	}
+
+	.menu-close {
+		display: block;
+	}
 }

@@ -1,8 +1,31 @@
-<main class="mainController">
-	<header>
-		<md-button class="menu" class="md-icon-button" aria-label="Back">
-			<md-icon md-svg-icon="img/menu.svg"></md-icon>
-		</md-button>
-		<h1 class="brand-name">Serious Chat</h1>
-	</header>
-</main>
+<div ng-controller="mainController">
+	<section layout="row" flex>
+		<aside ng-controller="asideMenuController">
+			<md-sidenav class="menu-sidenav md-sidenav-left" md-component-id="aside-menu" md-is-locked-open="$mdMedia('gt-md')">
+				<md-toolbar class="menu-header">
+					<md-button class="menu-close" aria-label="Close" ng-click="closeMenu()">
+						<md-icon md-svg-icon="img/close.svg"></md-icon>
+					</md-button>
+				</md-toolbar>
+				<md-toolbar class="menu-background">
+					<img src="img/serious-face.png" alt="Serious Youth" class="menu-avatar">
+					<div class="menu-info">
+						<h1 class="menu-nickname">Anonymous</h1>
+						<h2>anonymous@gmail.com</h2>
+					</div>
+				</md-toolbar>
+				<md-content layout-padding>
+					SIDENAV
+				</md-content>
+			</md-sidenav>
+		</aside>
+		<md-content flex layout-padding>
+			<header>
+				<md-button class="menu" class="md-icon-button" aria-label="Back" ng-click="showMenu()">
+					<md-icon md-svg-icon="img/menu.svg"></md-icon>
+				</md-button>
+				<h2 class="brand-name">Serious Chat</h2>
+			</header>
+		</md-content>
+	</section>
+</div>
