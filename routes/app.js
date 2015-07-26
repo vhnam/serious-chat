@@ -12,6 +12,8 @@ router.get('/', function(req, res, next) {
 		},
 		attributes: ['nickname', 'avatar', 'email']
 	}).then(function(user) {
+
+
 		res.render('app/index', {
 			'user': user,
 			'stylesheets': [
@@ -24,6 +26,7 @@ router.get('/', function(req, res, next) {
 				'/components/angular-aria/angular-aria.js',
 				'/components/angular-animate/angular-animate.js',
 				'/components/angular-material/angular-material.js',
+				'components/socket.io-client/socket.io.js',
 				'/js/app/index.js'
 			]
 		});

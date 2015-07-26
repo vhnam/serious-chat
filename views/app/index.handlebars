@@ -1,6 +1,6 @@
 <div ng-controller="mainController">
 	<section layout="row" flex>
-		<aside ng-controller="asideMenuController">
+		<aside ng-controller="asideMenuController" ng-init="user.nickname = '{{user.nickname}}'; user.email = '{{user.email}}'">
 			<md-sidenav class="menu-sidenav md-sidenav-left" md-component-id="aside-menu" md-is-locked-open="$mdMedia('gt-md')">
 				<md-toolbar class="menu-header">
 					<md-button class="menu-close" aria-label="Close" ng-click="closeMenu()">
