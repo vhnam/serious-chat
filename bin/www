@@ -1,21 +1,20 @@
 #!/usr/bin/env node
 
-var app = require('../app'),
+var modules = require('../modules')
+	app = require('../app'),
 	debug = require('debug')('serious-chat:server'),
 	http = require('http'),
-	models = require('../models'),
-	port = 1508,
-	modules = require('../modules');
+	models = require('../models');
 
 // get port from environment and store in Express.
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '80');
 //app.set('port', port);
 
 // create HTTP Server
 var server = http.createServer(app);
 
 //require('../modules/socket')(server);
-var chatService = modules.socket(http,app,port); //?ây là ph?n em s? d?ng ?
+var chatService = modules.socket(http,app,port);
 
 // listen on provided port, on all network interfaces.
 models.sequelize.sync().then(function() {

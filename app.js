@@ -5,6 +5,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     exphbs = require('express-handlebars'),
+	modules = require('./modules'),
     curSession = null;
 
 var app = express();
@@ -18,7 +19,10 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.use(logger('dev'));
 
 // set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+// set virtual host
+app.use(modules.helper.createVirtualHost(express,'chat.local.com',path.join(__dirname, 'public')));
+
 
 // to support JSON-encoded bodies
 app.use(bodyParser.json());

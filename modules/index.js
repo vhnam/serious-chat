@@ -1,4 +1,3 @@
-'use strict';
 
-module.exports.helper = require('./helper');
-module.exports.socket = require('./socket');
+exports.helper = require('./helper');
+exports.socket = require('./socket');

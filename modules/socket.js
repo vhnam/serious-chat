@@ -2,7 +2,8 @@
  * List user of chat ROOM.
  * @type {{}}
  */
-var users = {}; //?ây là code c?a ph?n socket c?a em ?
+
+var users = {};
 var _io = function (http, app, port) {
     var io, server;
     if (!(app && port && http)) {
