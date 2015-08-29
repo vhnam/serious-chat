@@ -11,7 +11,7 @@ var express = require('express'),
 var app = express();
 
 // view engine setup
-app.set('views', '../views');
+app.set('views', './views');
 app.set('view engine', 'handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 
@@ -21,7 +21,7 @@ app.use(logger('dev'));
 // set static folder
 //app.use(express.static(path.join(__dirname, 'public')));
 // set virtual host
-app.use(modules.helper.createVirtualHost(express,'chat.local.com',path.join(__dirname, 'public')));
+app.use(modules.helper.createVirtualHost(express,'chat.local.com',path.join(__dirname, '../public')));
 
 
 // to support JSON-encoded bodies
