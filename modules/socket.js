@@ -2,19 +2,19 @@
  * List user of chat ROOM.
  * @type {{}}
  */
-var users = {};
+var users = {}; //?ây là code c?a ph?n socket c?a em ?
 var _io = function (http, app, port) {
     var io, server;
-    if (!(app && port && server)) {
+    if (!(app && port && http)) {
         io = require('socket.io')(http);
     } else {
         server = http.createServer(app);
-        server.listen(process.env.WEBSITEPORT || process.env.PORT || port, function () {          
+        server.listen(process.env.WEBSITEPORT || process.env.PORT || port, function () {
             var address = server.address();
             console.log("opened server on %j", address);
         });
-        io = require('socket.io').listen(server);                
-    } 
+        io = require('socket.io').listen(server);
+    }
     io.on('connection', function (socket) {
         var isNewUser = false;
         console.log('A user connected');
@@ -69,8 +69,9 @@ var _io = function (http, app, port) {
         });
         
     });
-    
+
     return io;
 };
-
 module.exports = _io;
+
+
