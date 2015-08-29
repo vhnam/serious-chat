@@ -1,9 +1,9 @@
 var express = require('express'),
-	Rusha = require('rusha'),
+    Rusha = require('rusha'),
 	md5 = require('blueimp-md5').md5,
 	Sequelize = require('sequelize'),
 	router = express.Router(),
-	session = require('express-session'),
+	//session = require('express-session'),
 	models = require('../models');
 
 router.get('/', function(req, res, next) {

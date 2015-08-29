@@ -1,10 +1,11 @@
 //Console
 var express = require('express'),
-	logger = require('morgan'),
-	path = require('path'),
-	bodyParser = require('body-parser'),
-	session = require('express-session'),
-	exphbs = require('express-handlebars');
+    logger = require('morgan'),
+    path = require('path'),
+    bodyParser = require('body-parser'),
+    session = require('express-session'),
+    exphbs = require('express-handlebars'),
+    curSession = null;
 
 var app = express();
 

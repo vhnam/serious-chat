@@ -1,19 +1,19 @@
 var express = require('express'),
-	Rusha = require('rusha'),
+    Rusha = require('rusha'),
 	md5 = require('blueimp-md5').md5,
 	Sequelize = require('sequelize'),
 	router = express.Router(),
-	models = require('../models');
+	models = require('../models'),
+	modules = require('../modules');
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
+    curSession = req.session;
 	models.User.findOne({
 		where: {
 			id: req.session.uid
 		},
 		attributes: ['nickname', 'avatar', 'email']
 	}).then(function(user) {
-
-
 		res.render('app/index', {
 			'user': user,
 			'stylesheets': [

@@ -1,7 +1,5 @@
 'use strict';
-
 (function() {
-
 angular.module('serious-chat', ['ngMaterial'])
 
 	.config(function($interpolateProvider){
@@ -9,7 +7,7 @@ angular.module('serious-chat', ['ngMaterial'])
 			.startSymbol('[[')
 			.endSymbol(']]')
 		;
-	})
+	});
 
 	.factory('socket', ['$rootScope', function ($rootScope) {
 		var socket = io.connect();
@@ -17,10 +15,10 @@ angular.module('serious-chat', ['ngMaterial'])
 			on: function (eventName, callback) {
 				function wrapper() {
 					var args = arguments;
-					$rootScope.$apply(function () {
-						callback.apply(socket, args);
-					});
-				}
+					$rootScope.$apply(function (){
+						callback.apply(socket, args)
+					}),
+				};
 
 				socket.on(eventName, wrapper);
 
@@ -28,7 +26,6 @@ angular.module('serious-chat', ['ngMaterial'])
 					socket.removeListener(eventName, wrapper);
 				};
 			},
-
 			emit: function (eventName, data, callback) {
 				socket.emit(eventName, data, function () {
 					var args = arguments;
@@ -40,7 +37,7 @@ angular.module('serious-chat', ['ngMaterial'])
 				});
 			}
 		}
-	}])
+	}]);
 
 	.controller('mainController', ['$scope', '$mdSidenav', 'socket', function($scope, $mdSidenav, socket) {
 
@@ -67,7 +64,7 @@ angular.module('serious-chat', ['ngMaterial'])
 		socket.emit('request', {
 			data: $scope.user
 		});
-	}])
+	}]);
 
 	.controller('asideMenuController', ['$scope', '$mdSidenav', function($scope, $mdSidenav) {
 		$scope.closeMenu = function() {
@@ -79,7 +76,5 @@ angular.module('serious-chat', ['ngMaterial'])
 				window.location.href = 'app/signout';
 			}
 		}
-	}])
-;
-
+	}]);
 })();
