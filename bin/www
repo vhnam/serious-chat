@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-var modules = require('./modules')
-	app = require('./app'),
+var modules = require('../modules')
+	app = require('../app'),
 	debug = require('debug')('serious-chat:server'),
 	http = require('http'),
-	models = require('./models');
+	models = require('../models');
 
 // get port from environment and store in Express.
 var port = normalizePort(process.env.PORT || '80');
