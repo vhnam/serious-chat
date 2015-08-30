@@ -4,7 +4,8 @@ var express = require('express'),
 	Sequelize = require('sequelize'),
 	router = express.Router(),
 	session = require('express-session'),
-	models = require('../models');
+	models = require('../models'),
+	curSession;
 
 router.get('/', function(req, res, next) {
 	if (req.session.uid) {

@@ -57,13 +57,11 @@ angular.module('serious-chat', ['ngMaterial'])
 			$mdSidenav('aside-menu').toggle();
 		};
 
-		socket.on('response', function(data) {
+		socket.on('new user connect', function (data) {
 			console.log(data);
 		});
 
-		socket.emit('request', {
-			data: $scope.user
-		});
+		socket.emit('new login', {data: $scope.user});
 	}])
 
 	.controller('asideMenuController', ['$scope', '$mdSidenav', function($scope, $mdSidenav) {

@@ -1,13 +1,25 @@
-
-var key = 'bZd5AybT<x1BsDfN4d-';
-
+/**
+ * Define module variable
+ * @type {Rusha|exports|module.exports}
+ */
+var Rusha = require('rusha'),
+    md5 = require('blueimp-md5').md5
+/**
+ * Define private variable
+ * @type {string}
+ */
+var beginKey = 't?X(AjQ2&S%_)+lK-d6R';
+var endKey = '3[YCWxQnF%Au/@~CwfWi';
 /**
  * Function return encode of string.
  * @param str
  * @returns {*}
  */
 exports.enCodeUnique =  function (str) {
-    return md5(str);
+    var rusha = new Rusha();
+    //Decode string.
+    str = rusha.digest(beginKey + str + endKey);
+    return md5(endKey + str + beginKey);
 };
 
 /**
