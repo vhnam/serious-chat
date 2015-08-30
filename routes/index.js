@@ -9,7 +9,6 @@ var express = require('express'),
 router.get('/', function(req, res, next) {
 	if (req.session.uid) {
 		res.redirect('/app');
-		return;
 	}
 
 	res.render('index', {
@@ -26,6 +25,7 @@ router.get('/', function(req, res, next) {
 			'/js/index.js'
 		]
 	});
+	return;
 });
 
 router.get('/signup', function(req, res, next) {
