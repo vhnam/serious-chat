@@ -35,7 +35,6 @@ router.get('/', function (req, res, next) {
 	}else{
 		res.redirect('/signin');
 	}
-	return;
 });
 
 router.get('/signout', function(req, res, next) {
