@@ -3,12 +3,13 @@ var express = require('express'),
 	md5 = require('blueimp-md5').md5,
 	Sequelize = require('sequelize'),
 	router = express.Router(),
-	//session = require('express-session'),
+	session = require('express-session'),
 	models = require('../models');
 
 router.get('/', function(req, res, next) {
 	if (req.session.uid) {
 		res.redirect('/app');
+		return;
 	}
 
 	res.render('index', {
@@ -46,20 +47,13 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next) {
-	var email = req.body.email,
-		hash = req.body.hash,
-		rusha = new Rusha();
-
-	hash = rusha.digest('5h3h53ui4h5u' + hash + '34b42j3hb42jh');
-	hash = md5('543bhjb53gf' + hash + '324kj234jh32kjh');
-
-	models.User.create({
-		email: email,
-		password: hash,
-		nickname: 'Anonymous'
-	}).then(function() {
-		res.redirect('/signin');
-	});
+	var user = models.sequelize.processUser(req.body);
+	if(user) {
+		user.nickname = 'Anonymous';
+		models.User.create(user).then(function () {
+			res.redirect('/signin');
+		});
+	}
 });
 
 router.get('/signin', function(req, res, next) {
@@ -81,27 +75,22 @@ router.get('/signin', function(req, res, next) {
 });
 
 router.post('/signin', function(req, res, next) {
-	var email = req.body.email,
-		hash = req.body.hash,
-		rusha = new Rusha();
-
-	hash = rusha.digest('5h3h53ui4h5u' + hash + '34b42j3hb42jh');
-	hash = md5('543bhjb53gf' + hash + '324kj234jh32kjh');
-
-	models.User.findOne({
-		where: {
-			email: email,
-			password: hash
-		},
-		attributes: ['id']
-	}).then(function(user) {
-		if (user === null) {
-			res.redirect('/signin');
-		} else {
-			req.session.uid = user.dataValues.id;
-			res.redirect('/app');
-		}
-	});
+	var data = models.sequelize.processUser(req.body);
+	if(data) {
+		models.User.findOne({
+			where: data,
+			attributes: ['id']
+		}).then(function (user) {
+			if (user === null) {
+				res.redirect('/signin');
+			} else {
+				req.session.uid = user.dataValues.id;
+				res.redirect('/app');
+			}
+		});
+	}else{
+		res.redirect('/signin');
+	}
 });
 
 module.exports = router;

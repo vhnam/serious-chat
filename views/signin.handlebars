@@ -17,7 +17,6 @@
 				<md-icon md-svg-src="img/key.svg"></md-icon>
 				<input ng-model="user.password" name="password" type="password" placeholder="Password" ng-required="true" autocomplete="off" spellcheck="false" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{6,}$">
 			</md-input-container>
-			<input type="hidden" ng-value="user.hash" name="hash">
 			<md-button class="md-raised btn-sign-in">Sign In</md-button>
 		</form>
 	</article>

@@ -23,11 +23,13 @@ angular.module('serious-chat', ['ngMaterial'])
 			}
 
 			// using SHA-1 algorithm for encode
-			var rusha = new Rusha();
-			$scope.user.hash = rusha.digest('4hj2g4j234gf' + $scope.user.password + 'f723hfh2r23h723');
+			var rusha = new Rusha(),
+			password = $scope.user.password;
+			$scope.user.confirmPassword = '';
+			password = rusha.digest('4hj2g4j234gf' + password + 'f723hfh2r23h723');
 
 			// using MD5 algorithm for encode
-			$scope.user.hash = md5('5n3k5h4ruhui45h' + $scope.user.hash + '42b3jh423h42gj');
+			$scope.user.password = md5('5n3k5h4ruhui45h' + password + '42b3jh423h42gj');
 		};
 	}])
 ;

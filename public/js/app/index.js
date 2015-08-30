@@ -7,7 +7,7 @@ angular.module('serious-chat', ['ngMaterial'])
 			.startSymbol('[[')
 			.endSymbol(']]')
 		;
-	});
+	})
 
 	.factory('socket', ['$rootScope', function ($rootScope) {
 		var socket = io.connect();
@@ -17,7 +17,7 @@ angular.module('serious-chat', ['ngMaterial'])
 					var args = arguments;
 					$rootScope.$apply(function (){
 						callback.apply(socket, args)
-					}),
+					})
 				};
 
 				socket.on(eventName, wrapper);
@@ -37,7 +37,7 @@ angular.module('serious-chat', ['ngMaterial'])
 				});
 			}
 		}
-	}]);
+	}])
 
 	.controller('mainController', ['$scope', '$mdSidenav', 'socket', function($scope, $mdSidenav, socket) {
 
@@ -64,7 +64,7 @@ angular.module('serious-chat', ['ngMaterial'])
 		socket.emit('request', {
 			data: $scope.user
 		});
-	}]);
+	}])
 
 	.controller('asideMenuController', ['$scope', '$mdSidenav', function($scope, $mdSidenav) {
 		$scope.closeMenu = function() {

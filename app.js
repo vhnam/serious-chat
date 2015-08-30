@@ -19,10 +19,10 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.use(logger('dev'));
 
 // set static folder
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 // set virtual host
 console.log(__dirname);
-app.use(modules.helper.createVirtualHost(express,'chat.local.com',path.join(__dirname, '../public')));
+//app.use(modules.helper.createVirtualHost(express,'chat.local.com',path.join(__dirname, '../public')));
 
 
 // to support JSON-encoded bodies
