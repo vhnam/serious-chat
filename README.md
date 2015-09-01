@@ -18,5 +18,49 @@
 ## Standard
 * Email - [RFC 5322 Official Standard](http://www.ietf.org/rfc/rfc5322.txt)
 
+## Config
+To config database, open ```/config/config.json```.
+```
+{
+	"development": {
+		"username": "root",
+		"password": "",
+		"database": "serious_chat",
+		"host": "127.0.0.1",
+		"dialect": "mysql"
+	},
+	"test": {
+		"username": "root",
+		"password": "",
+		"database": "serious_chat",
+		"host": "127.0.0.1",
+		"dialect": "mysql"
+	},
+	"production": {
+		"username": "root",
+		"password": "",
+		"database": "serious_chat",
+		"host": "127.0.0.1",
+		"dialect": "mysql"
+	}
+}
+```
+
+## Quick start
+Install dependencies:
+```
+bower install
+npm install
+```
+
+Start the server:
+```
+npm start
+```
+
+## Contributors
+* Nam Vo Hoai <vhnam2504@gmail.com>
+* Hieu Le Hoang <hieu.gh@gmail.com>
+
 ## License
 [The MIT License](http://opensource.org/licenses/MIT)
