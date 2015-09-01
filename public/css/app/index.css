@@ -152,17 +152,28 @@ md-sidenav {
 	height: calc(100% - 130px);
 }
 
+.chat-side .chat-content {
+	height: calc(100vh - 250px);
+	overflow-y: auto;
+}
+
+.chat-side .clear {
+	clear: both;
+}
+
 .chat-box {
 	position: absolute;
 	bottom: 32px;
 	width: calc(100% - 64px);
+	height: 110px;
+	background-color: #fff;
 }
 
-.chat-toolbar-mobile {
+.chat-box .chat-toolbar {
 	float: right;
 }
 
-textarea {
+.chat-box textarea {
 	width: 100%;
 	height: 48px;
 	resize: none;
@@ -180,12 +191,41 @@ textarea {
 	border: 1px solid #e0e0e0;
 }
 
-textarea:focus{
+.chat-box textarea:focus{
 	background: #fff;
 	box-shadow: 0;
 	border: 1px solid #bdbdbd;
 	outline: none;
 	padding: 8px;
+}
+
+.chat-post {
+	margin: 16px 0;
+}
+
+.chat-post .chat-avatar {
+	height: 32px;
+	width: 32px;
+	border-radius: 50px;
+	margin-right: 16px;
+	float: left;
+}
+
+.chat-post .post-content {
+	line-height: 1.5em;
+	padding: 8px;
+	background-color: #f5f5f5;
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	border-radius: 3px;
+	float: left;
+	width: calc(100% - 72px);
+}
+
+.chat-post .post-nickname {
+	color: #536dfe;
+	margin-bottom: 8px;
 }
 
 @media(max-width: 640px) {
@@ -209,5 +249,11 @@ textarea:focus{
 	.chat-box {
 		width: calc(100% - 32px);
 		bottom: 0;
+	}
+}
+
+@media(max-height: 200px) {
+	.chat-box {
+		position: relative;
 	}
 }
