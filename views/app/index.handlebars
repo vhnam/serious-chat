@@ -1,48 +1,65 @@
 <div ng-controller="mainController">
-	<section layout="row" flex>
-		<aside ng-controller="asideMenuController" ng-init="user.nickname = '{{user.nickname}}'; user.email = '{{user.email}}'">
-			<md-sidenav class="menu-sidenav md-sidenav-left" md-component-id="aside-menu" md-is-locked-open="$mdMedia('gt-md')">
-				<md-toolbar class="menu-header">
-					<md-button class="menu-close" aria-label="Close" ng-click="closeMenu()">
-						<md-icon md-svg-icon="img/close.svg"></md-icon>
-					</md-button>
-				</md-toolbar>
-				<md-toolbar class="menu-background">
-					{{#if user.avatar}}
-						<img src="img/users/{{user.avatar}}" alt="{{user.nickname}}" class="menu-avatar">
-					{{else}}
-						<img src="img/anonymous-face.png" alt="Serious Youth" class="menu-avatar">
-					{{/if}}
-					<div class="menu-info">
-						<h1 class="menu-nickname">{{user.nickname}}</h1>
-						<h2>{{user.email}}</h2>
-					</div>
-				</md-toolbar>
-				<md-content layout-padding>
-					<md-menu-content width="1">
-						<md-menu-item ng-repeat="item in ['Profile', 'Friends', 'Sign out']">
-							<md-button ng-click="move(item)">
-								[[item]]
-							</md-button>
-						</md-menu-item>
-					</md-menu-content>
-				</md-content>
-			</md-sidenav>
-		</aside>
-		<md-content flex layout-padding>
-			<header class="main-header" ng-class="{isSearching: isSearching}">
-				<md-button class="menu" class="md-icon-button" aria-label="Menu" ng-click="showMenu()">
-					<md-icon md-svg-icon="img/menu.svg"></md-icon>
-				</md-button>
-				<md-button class="md-icon-button main-header-back" aria-label="Back" ng-click="back()">
-					<md-icon md-svg-icon="img/back.svg"></md-icon>
-				</md-button>
-				<md-button class="md-icon-button main-header-search" aria-label="Search" ng-click="search()">
-					<md-icon md-svg-icon="img/search.svg"></md-icon>
-				</md-button>
-				<h2 class="brand-name">Serious Chat</h2>
-				<input id="search-keyword" type="text" autocomplete="off" spellcheck="false" placeholder="Search" autofocus class="main-header-search-keyword">
-			</header>
-		</md-content>
-	</section>
+    <section layout="row" flex>
+        <aside ng-controller="asideMenuController" ng-init="user.nickname = '{{user.nickname}}'; user.email = '{{user.email}}'">
+            <md-sidenav class="menu-sidenav md-sidenav-left" md-component-id="aside-menu" md-is-locked-open="$mdMedia('gt-md')">
+                <md-toolbar class="menu-header">
+                    <md-button class="menu-close" aria-label="Close" ng-click="closeMenu()">
+                        <md-icon md-svg-icon="img/close.svg"></md-icon>
+                    </md-button>
+                </md-toolbar>
+                <md-toolbar class="menu-background">
+                    {{#if user.avatar}}
+                        <img src="img/users/{{user.avatar}}" alt="{{user.nickname}}" class="menu-avatar">
+                    {{else}}
+                        <img src="img/anonymous-face.png" alt="Serious Youth" class="menu-avatar">
+                    {{/if}}
+                    <div class="menu-info">
+                        <h1 class="menu-nickname">{{user.nickname}}</h1>
+                        <h2>{{user.email}}</h2>
+                    </div>
+                </md-toolbar>
+                <md-content layout-padding>
+                    <md-menu-content width="1">
+                        <md-menu-item ng-repeat="item in ['Profile', 'Friends', 'Sign out']">
+                            <md-button ng-click="move(item)">
+                                [[item]]
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-content>
+            </md-sidenav>
+        </aside>
+        <md-content flex layout-padding>
+            <header class="main-header" ng-class="{isSearching: isSearching}">
+                <md-button class="menu" class="md-icon-button" aria-label="Menu" ng-click="showMenu()">
+                    <md-icon md-svg-icon="img/menu.svg"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button main-header-back" aria-label="Back" ng-click="back()">
+                    <md-icon md-svg-icon="img/back.svg"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button main-header-search" aria-label="Search" ng-click="search()">
+                    <md-icon md-sv -icon="img/search.svg"></md-icon>
+                </md-button>
+                <h2 class="brand-name">Serious Chat</h2>
+                <input id="search-keyword" type="text" autocomplete="off" spellcheck="false" placeholder="Search" autofocus class="main-header-search-keyword">
+            </header>
+            <main class="chat-side">
+                <div>
+                    Hello World
+                </div>
+                <div class="chat-box">
+                    <textarea name="chat-box" placeholder="Write a message...">
+                    </textarea>
+                    <div class="chat-toolbar-mobile">
+                        <md-button class="md-icon-button" aria-label="Emotion">
+                            <md-icon md-svg-icon="img/face.svg"></md-icon>
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="Send">
+                            <md-icon md-svg-icon="img/send.svg"></md-icon>
+                        </md-button>
+                    </div>
+                </div>
+            </main>
+        </md-content>
+    </section>
 </div>

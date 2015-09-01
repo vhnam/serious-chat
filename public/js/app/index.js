@@ -62,6 +62,8 @@ angular.module('serious-chat', ['ngMaterial'])
 		});
 
 		socket.emit('new login', {data: $scope.user});
+
+		
 	}])
 
 	.controller('asideMenuController', ['$scope', '$mdSidenav', function($scope, $mdSidenav) {
