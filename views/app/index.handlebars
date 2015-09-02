@@ -2,8 +2,8 @@
     <section layout="row" flex>
         <aside class="md-whiteframe-z2" ng-controller="asideMenuController" ng-init="user.nickname = '{{user.nickname}}'; user.email = '{{user.email}}'">
             <md-sidenav class="menu-sidenav md-sidenav-left" md-component-id="aside-menu" md-is-locked-open="$mdMedia('gt-md')">
-                <header class="menu-header">
-                </header>
+                <md-toolbar class="site-content-toolbar menu-header">
+                </md-toolbar>
                 <md-toolbar class="menu-background">
                     {{#if user.avatar}}
                         <img src="img/users/{{user.avatar}}" alt="{{user.nickname}}" class="menu-avatar">

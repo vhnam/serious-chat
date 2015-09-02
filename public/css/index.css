@@ -26,7 +26,6 @@ header > nav > ul > li > a {
 }
 
 header > nav > ul > li {
-	margin-left: 16px;
 	padding: 16px;
 	border-radius: 3px;
 	-webkit-transition: background-color 0.3s ease;
@@ -102,6 +101,16 @@ header > nav > ul > li:hover {
 	position: fixed;
 	bottom: 32px;
 	right: 32px;
+}
+
+@media(max-width: 640px) {
+	header > nav {
+		right: 16px;
+	}
+
+	header > nav > ul > li {
+		padding: 8px;
+	}
 }
 
 @media(max-height: 320px) {

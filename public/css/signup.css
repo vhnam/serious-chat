@@ -54,3 +54,9 @@ md-input-container:not(.md-input-invalid) > md-icon{
 	color: #f44336;
 	text-align: center;
 }
+
+@media(max-width: 640px) {
+	header .md-toolbar-tools {
+		padding: 0;
+	}
+}

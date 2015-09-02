@@ -1,3 +1,7 @@
+[layout] {
+	display: flex !important;
+}
+
 .main-content {
 	width: 100vw;
 }
