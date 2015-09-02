@@ -1,4 +1,4 @@
-<div ng-controller="mainController" layout="row" ng-cloak>
+<div ng-controller="mainController" class="main-content" layout="row" ng-cloak>
     <section layout="row" flex>
         <aside class="md-whiteframe-z2" ng-controller="asideMenuController" ng-init="user.nickname = '{{user.nickname}}'; user.email = '{{user.email}}'">
             <md-sidenav class="menu-sidenav md-sidenav-left" md-component-id="aside-menu" md-is-locked-open="$mdMedia('gt-md')">
@@ -51,57 +51,39 @@
                     <div class="chat-content">
                         <div class="chat-post">
                             <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
+                            <span class="post-content">
                                 <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
+                                Color in material design is inspired by bold hues juxtaposed with muted environments, deep shadows, and bright highlights. Material takes cues from contemporary architecture, road signs, pavement marking tape, and athletic courts. Color should be unexpected and vibrant.
+                            </span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="chat-post">
+                            <span class="post-content me">
+                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps.
+                            </span>
                         </div>
                         <div class="clear"></div>
                         <div class="chat-post">
                             <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
+                            <span class="post-content">
                                 <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
+                                Color in material design is inspired by bold hues juxtaposed with muted environments, deep shadows, and bright highlights.
+                            </span>
                         </div>
                         <div class="clear"></div>
                         <div class="chat-post">
-                            <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
-                                <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="chat-post">
-                            <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
-                                <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="chat-post">
-                            <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
-                                <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="chat-post">
-                            <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
-                                <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
+                            <span class="post-content me">
+This color palette comprises primary and accent colors that can be used for illustration or to develop your brand colors. They’ve been designed to work harmoniously with each other.
+
+The color palette starts with primary colors and fills in the spectrum to create a complete and usable palette for Android, Web, and iOS. Google suggests using the 500 colors as the primary colors in your app and the other colors as accents colors
+                            </span>
                         </div>
                         <div class="clear"></div>
                     </div>
                 </md-content>
             </md-content>
             <div class="chat-box">
-                <textarea name="chat-box" placeholder="Write a message...">
+                <textarea name="chat-box" ng-model="message" placeholder="Write a message...">
                 </textarea>
                 <div class="chat-toolbar">
                     <md-button class="md-icon-button" aria-label="Emotion">
