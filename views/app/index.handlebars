@@ -1,6 +1,6 @@
 <div ng-controller="mainController" layout="row" ng-cloak>
     <section layout="row" flex>
-        <aside ng-controller="asideMenuController" ng-init="user.nickname = '{{user.nickname}}'; user.email = '{{user.email}}'">
+        <aside class="md-whiteframe-z2" ng-controller="asideMenuController" ng-init="user.nickname = '{{user.nickname}}'; user.email = '{{user.email}}'">
             <md-sidenav class="menu-sidenav md-sidenav-left" md-component-id="aside-menu" md-is-locked-open="$mdMedia('gt-md')">
                 <header class="menu-header">
                 </header>
@@ -29,27 +29,25 @@
         <div layout="column" tabIndex="-1" role="main" flex>
             <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar main-header" ng-class="{isSearching: isSearching}">
                 <div class="md-toolbar-tools">
-                     <md-button class="md-icon-button" hide-gt-sm aria-label="Toggle Menu" ng-click="showMenu()">
+                     <md-button class="md-icon-button menu" hide-gt-sm aria-label="Toggle Menu" ng-click="showMenu()">
                         <md-icon md-svg-icon="img/menu.svg"></md-icon>
                     </md-button>
+                    {{!-- Search form --}}
+                    <md-button class="md-icon-button main-header-back" aria-label="Back" ng-click="back()">
+                        <md-icon md-svg-icon="img/back.svg"></md-icon>
+                    </md-button>
+                    <input id="search-keyword" type="text" autocomplete="off" spellcheck="false" placeholder="Search" autofocus class="main-header-search-keyword">
+                    {{!-- end Search form --}}
                     <div layout="row" flex class="fill-height">
-                        <h2 class="md-toolbar-item md-breadcrumb md-headline">Serious Chat</h2>
+                        <h2 class="md-toolbar-item md-breadcrumb md-headline brand-name">Serious Chat</h2>
                     </div>
+                    <md-button class="md-icon-button main-header-search" aria-label="Search" ng-click="search()">
+                        <md-icon md-svg-icon="img/search.svg"></md-icon>
+                    </md-button>
                 </div>
-                {{!-- <md-button class="menu" class="md-icon-button" aria-label="Menu" ng-click="showMenu()">
-                    <md-icon md-svg-icon="img/menu.svg"></md-icon>
-                </md-button>
-                <md-button class="md-icon-button main-header-back" aria-label="Back" ng-click="back()">
-                    <md-icon md-svg-icon="img/back.svg"></md-icon>
-                </md-button>
-                <md-button class="md-icon-button main-header-search" aria-label="Search" ng-click="search()">
-                    <md-icon md-sv -icon="img/search.svg"></md-icon>
-                </md-button>
-                <h2 class="brand-name">Serious Chat</h2>
-                <input id="search-keyword" type="text" autocomplete="off" spellcheck="false" placeholder="Search" autofocus class="main-header-search-keyword"> --}}
             </md-toolbar>
             <md-content md-scroll-y flex layout-padding>
-                <md-content class="md-default-theme">
+                <md-content class="md-default-theme chat">
                     <div class="chat-content">
                         <div class="chat-post">
                             <img src="img/anonymous-face.png" alt="User" class="chat-avatar">

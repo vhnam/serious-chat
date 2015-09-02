@@ -35,6 +35,8 @@ md-sidenav {
 }
 
 .menu-sidenav {
+	-moz-box-shadow: 0 64px 5px 0 rgba(0, 0, 0, 0.26);
+	-webkit-box-shadow: 0 64px 5px 0 rgba(0, 0, 0, 0.26);
 	box-shadow: 0 64px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
@@ -87,12 +89,6 @@ md-sidenav {
 	padding: 16px;
 }
 
-.main-header-search {
-	top: 8px;
-	right: 8px;
-	position: absolute;
-}
-
 .main-header {
 	background-color: #F44336;
 }
@@ -104,6 +100,10 @@ md-sidenav {
 
 .main-header-back > md-icon {
 	color: #fff;
+}
+
+.isSearching .md-toolbar-tools {
+	padding: 0;
 }
 
 .isSearching .menu,
@@ -119,7 +119,7 @@ md-sidenav {
 
 .main-header-search-keyword {
 	display: none;
-	width: calc(100vw - 64px);
+	width: calc(100% - 64px);
 	box-shadow: none;
 	border-width: 0;
 	background-color: transparent;
@@ -147,6 +147,10 @@ md-sidenav {
 
 .main-header-search-keyword:-ms-input-placeholder {
    color: #ffcdd2;
+}
+
+md-content {
+	position: inherit;
 }
 
 .chat-content {
