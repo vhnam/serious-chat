@@ -15,10 +15,10 @@ header .back-arrow > md-icon {
 	color: #fff;
 }
 
-header > .title {
+header .title {
 	padding: 16px 0;
 	font-size: 24px;
-	color: #fff;
+	color: #fff !important;
 	line-height: 1.5em;
 }
 
@@ -61,4 +61,10 @@ section {
 
 .acticle-stack pre {
 	margin-top: 16px;
+}
+
+@media(max-width: 640px) {
+	header .md-toolbar-tools {
+		padding: 0;
+	}
 }

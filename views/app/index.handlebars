@@ -1,9 +1,9 @@
-<div ng-controller="mainController" layout="row" ng-cloak>
+<div ng-controller="mainController" class="main-content" layout="row" ng-cloak>
     <section layout="row" flex>
-        <aside ng-controller="asideMenuController" ng-init="user.nickname = '{{user.nickname}}'; user.email = '{{user.email}}'">
+        <aside class="md-whiteframe-z2" ng-controller="asideMenuController" ng-init="user.nickname = '{{user.nickname}}'; user.email = '{{user.email}}'">
             <md-sidenav class="menu-sidenav md-sidenav-left" md-component-id="aside-menu" md-is-locked-open="$mdMedia('gt-md')">
-                <header class="menu-header">
-                </header>
+                <md-toolbar class="site-content-toolbar menu-header">
+                </md-toolbar>
                 <md-toolbar class="menu-background">
                     {{#if user.avatar}}
                         <img src="img/users/{{user.avatar}}" alt="{{user.nickname}}" class="menu-avatar">
@@ -29,81 +29,61 @@
         <div layout="column" tabIndex="-1" role="main" flex>
             <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar main-header" ng-class="{isSearching: isSearching}">
                 <div class="md-toolbar-tools">
-                     <md-button class="md-icon-button" hide-gt-sm aria-label="Toggle Menu" ng-click="showMenu()">
+                     <md-button class="md-icon-button menu" hide-gt-sm aria-label="Toggle Menu" ng-click="showMenu()">
                         <md-icon md-svg-icon="img/menu.svg"></md-icon>
                     </md-button>
+                    {{!-- Search form --}}
+                    <md-button class="md-icon-button main-header-back" aria-label="Back" ng-click="back()">
+                        <md-icon md-svg-icon="img/back.svg"></md-icon>
+                    </md-button>
+                    <input id="search-keyword" type="text" autocomplete="off" spellcheck="false" placeholder="Search" autofocus class="main-header-search-keyword">
+                    {{!-- end Search form --}}
                     <div layout="row" flex class="fill-height">
-                        <h2 class="md-toolbar-item md-breadcrumb md-headline">Serious Chat</h2>
+                        <h2 class="md-toolbar-item md-breadcrumb md-headline brand-name">Serious Chat</h2>
                     </div>
+                    <md-button class="md-icon-button main-header-search" aria-label="Search" ng-click="search()">
+                        <md-icon md-svg-icon="img/search.svg"></md-icon>
+                    </md-button>
                 </div>
-                {{!-- <md-button class="menu" class="md-icon-button" aria-label="Menu" ng-click="showMenu()">
-                    <md-icon md-svg-icon="img/menu.svg"></md-icon>
-                </md-button>
-                <md-button class="md-icon-button main-header-back" aria-label="Back" ng-click="back()">
-                    <md-icon md-svg-icon="img/back.svg"></md-icon>
-                </md-button>
-                <md-button class="md-icon-button main-header-search" aria-label="Search" ng-click="search()">
-                    <md-icon md-sv -icon="img/search.svg"></md-icon>
-                </md-button>
-                <h2 class="brand-name">Serious Chat</h2>
-                <input id="search-keyword" type="text" autocomplete="off" spellcheck="false" placeholder="Search" autofocus class="main-header-search-keyword"> --}}
             </md-toolbar>
             <md-content md-scroll-y flex layout-padding>
-                <md-content class="md-default-theme">
+                <md-content class="md-default-theme chat">
                     <div class="chat-content">
                         <div class="chat-post">
                             <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
+                            <span class="post-content">
                                 <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
+                                Color in material design is inspired by bold hues juxtaposed with muted environments, deep shadows, and bright highlights. Material takes cues from contemporary architecture, road signs, pavement marking tape, and athletic courts. Color should be unexpected and vibrant.
+                            </span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="chat-post">
+                            <span class="post-content me">
+                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps.
+                            </span>
                         </div>
                         <div class="clear"></div>
                         <div class="chat-post">
                             <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
+                            <span class="post-content">
                                 <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
+                                Color in material design is inspired by bold hues juxtaposed with muted environments, deep shadows, and bright highlights.
+                            </span>
                         </div>
                         <div class="clear"></div>
                         <div class="chat-post">
-                            <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
-                                <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="chat-post">
-                            <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
-                                <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="chat-post">
-                            <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
-                                <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="chat-post">
-                            <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-                            <div class="post-content">
-                                <h4 class="post-nickname">Harry James</h4>
-                                Treehouse is where you go to learn HTML, CSS, and how to build iOS apps. It's a complete education in modern web and app technology, designed to get you ready for a hot new job or to kickstart your own business.
-                            </div>
+                            <span class="post-content me">
+This color palette comprises primary and accent colors that can be used for illustration or to develop your brand colors. They’ve been designed to work harmoniously with each other.
+
+The color palette starts with primary colors and fills in the spectrum to create a complete and usable palette for Android, Web, and iOS. Google suggests using the 500 colors as the primary colors in your app and the other colors as accents colors
+                            </span>
                         </div>
                         <div class="clear"></div>
                     </div>
                 </md-content>
             </md-content>
             <div class="chat-box">
-                <textarea name="chat-box" placeholder="Write a message...">
+                <textarea name="chat-box" ng-model="message" placeholder="Write a message...">
                 </textarea>
                 <div class="chat-toolbar">
                     <md-button class="md-icon-button" aria-label="Emotion">

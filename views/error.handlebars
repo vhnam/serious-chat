@@ -1,10 +1,14 @@
 <header>
-	<a href="/">
-		<md-button class="back-arrow" class="md-icon-button" aria-label="Back">
-			<md-icon md-svg-icon="img/back.svg"></md-icon>
-		</md-button>
-	</a>
-	<h1 class="title">Error</h1>
+	<div class="md-toolbar-tools">
+		<a href="/">
+			<md-button class="back-arrow" class="md-icon-button" aria-label="Back">
+				<md-icon md-svg-icon="img/back.svg"></md-icon>
+			</md-button>
+		</a>
+		<div layout="row" flex class="fill-height">
+			<h1 class="title">Error</h1>
+		</div>
+	</div>
 </header>
 <section>
 	{{#if error}}

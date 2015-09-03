@@ -43,6 +43,8 @@ angular.module('serious-chat', ['ngMaterial'])
 
 		$scope.user = {};
 
+		$scope.message = '';
+
 		$scope.search = function() {
 			$scope.isSearching = true;
 			$('#search-keyword').show().focus();
