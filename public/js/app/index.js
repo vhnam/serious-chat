@@ -18,13 +18,13 @@ angular.module('serious-chat', ['ngMaterial'])
 					$rootScope.$apply(function (){
 						callback.apply(socket, args)
 					})
-				};
+				}
 
 				socket.on(eventName, wrapper);
 
 				return function () {
 					socket.removeListener(eventName, wrapper);
-				};
+				}
 			},
 			emit: function (eventName, data, callback) {
 				socket.emit(eventName, data, function () {
@@ -46,7 +46,7 @@ angular.module('serious-chat', ['ngMaterial'])
 		$scope.search = function() {
 			$scope.isSearching = true;
 			$('#search-keyword').show().focus();
-		}
+		};
 
 		$scope.back = function() {
 			$scope.isSearching = false;
@@ -55,13 +55,28 @@ angular.module('serious-chat', ['ngMaterial'])
 
 		$scope.showMenu = function() {
 			$mdSidenav('aside-menu').toggle();
-		};
+		}
 
-		socket.on('new user connect', function (data) {
+		/**
+		 * function send message
+		 */
+		$scope.sendMessage = function(){
+
+		}
+
+
+		socket.on('newUserConnect', function (data) {
 			console.log(data);
 		});
 
-		socket.emit('new login', {data: $scope.user});
+		socket.emit('newLogin', $scope.user);
+
+		/**
+		 * Function new message
+		 */
+		socket.on('newMessage',function(data){
+			console.log(data);
+		});
 
 
 	}])

@@ -17,13 +17,19 @@ var _io = function (http, app, port) {
     }
     io.on('connection', function (socket) {
         var isNewUser = false, uniqueName;
-        console.log('A user connected');
+        //console.log('A user connected');
+        /**
+         * Create unique id with email or string input
+         * @param email
+         * @returns {*}
+         */
         function getUnique(email){
             if(email){
                 uniqueName = require('./helper').enCodeUnique(email);
             }
             return uniqueName;
         }
+
         //#start Declare function for socket ------------
         /**
          * Function add new user to list Users
@@ -57,24 +63,42 @@ var _io = function (http, app, port) {
          *  .nickName
          * }
          */
-        socket.on('new login', function(user){
-            addNewUser(this,user.data);
+        socket.on('newLogin', function(user){
+            addNewUser(this,user);
         });
 
-
-        socket.on('typing', function (data) {
-            //io.emit('response', data);
-        });
-        
         /**
-         * Event for new message 
+         * Event on user is typing ---
          * data = {
-         *     .userName,
-         *     .msg,
-         * } 
+         *  .unique id client
+         *  .unique id user capture
+         * }
          */
-        socket.on('new message',function(data){
-            
+        socket.on('typing', function (data) {
+            //Code logic here.
+        });
+
+        /**
+         * Event on user en type ---
+         *
+         */
+        socket.on('endType', function (data) {
+            //Code logic here.
+        });
+
+        /**
+         * Event for send message
+         * data = {
+         *  .unique group,
+         *  .unique send,
+         *  .nickname,
+         *  .avatar,
+         *  .message
+         * }
+         */
+        socket.on('sendMessage',function(data){
+            //Code logic here.
+
         });
 
         socket.on('disconnect', function () {

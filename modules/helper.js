@@ -10,6 +10,8 @@ var Rusha = require('rusha'),
  */
 var beginKey = 't?X(AjQ2&S%_)+lK-d6R';
 var endKey = '3[YCWxQnF%Au/@~CwfWi';
+
+
 /**
  * Function return encode of string.
  * @param str
@@ -31,6 +33,7 @@ exports.getCountry = function (ipAddress) {
 };
 
 /**
+ * Create virtual host
  * @param domainName
  * @param dirPath
  * @returns {*}
