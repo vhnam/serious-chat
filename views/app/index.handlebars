@@ -18,7 +18,7 @@
                 <md-content layout-padding>
                     <md-menu-content width="1">
                         <md-menu-item ng-repeat="item in ['Profile', 'Friends', 'Sign out']">
-                            <md-button ng-click="move(item)">
+                            <md-button ng-click="redirect(item)">
                                 [[item]]
                             </md-button>
                         </md-menu-item>
@@ -29,7 +29,7 @@
         <div layout="column" tabIndex="-1" role="main" flex>
             <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar main-header" ng-class="{isSearching: isSearching}">
                 <div class="md-toolbar-tools">
-                     <md-button class="md-icon-button menu" hide-gt-sm aria-label="Toggle Menu" ng-click="showMenu()">
+                     <md-button class="md-icon-button menu" hide-gt-sm aria-label="Toggle Menu" ng-click="showSidenav()">
                         <md-icon md-svg-icon="img/menu.svg"></md-icon>
                     </md-button>
                     {{!-- Search form --}}
@@ -49,7 +49,7 @@
             <md-content md-scroll-y flex layout-padding>
                 <md-content class="md-default-theme chat">
                     <div class="chat-content">
-                        <div class="chat-post">
+                        {{!-- <div class="chat-post">
                             <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
                             <span class="post-content">
                                 <h4 class="post-nickname">Harry James</h4>
@@ -73,23 +73,26 @@
                         <div class="clear"></div>
                         <div class="chat-post">
                             <span class="post-content me">
-This color palette comprises primary and accent colors that can be used for illustration or to develop your brand colors. They’ve been designed to work harmoniously with each other.
-
-The color palette starts with primary colors and fills in the spectrum to create a complete and usable palette for Android, Web, and iOS. Google suggests using the 500 colors as the primary colors in your app and the other colors as accents colors
+                                This color palette comprises primary and accent colors that can be used for illustration or to develop your brand colors. They’ve been designed to work harmoniously with each other.
                             </span>
                         </div>
-                        <div class="clear"></div>
+                        <div class="clear"></div> --}}
+                        <message ng-repeat="message in messages"
+                                avatar="[[message.user.avatar]]"
+                                nickname="[[message.user.nickname]]"
+                                isme="[[message.user.isme]]"
+                                content="[[message.content]]"/>
                     </div>
                 </md-content>
             </md-content>
             <div class="chat-box">
-                <textarea name="chat-box" ng-model="message" placeholder="Write a message...">
+                <textarea name="chat-box" ng-model="message" placeholder="Write a message..." ng-enter="sendMessage()">
                 </textarea>
                 <div class="chat-toolbar">
                     <md-button class="md-icon-button" aria-label="Emotion">
                         <md-icon md-svg-icon="img/face.svg"></md-icon>
                     </md-button>
-                    <md-button class="md-icon-button" aria-label="Send">
+                    <md-button class="md-icon-button" aria-label="Send" ng-click="sendMessage()">
                         <md-icon md-svg-icon="img/send.svg"></md-icon>
                     </md-button>
                 </div>
