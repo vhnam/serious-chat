@@ -48,7 +48,7 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next) {
-	var user = models.sequelize.processUser(req.body);
+	var user = models.User.processUser(req.body);
 	if(user) {
 		user.nickname = 'Anonymous';
 		models.User.create(user).then(function () {
@@ -76,7 +76,7 @@ router.get('/signin', function(req, res, next) {
 });
 
 router.post('/signin', function(req, res, next) {
-	var data = models.sequelize.processUser(req.body);
+	var data = models.User.processUser(req.body);
 	if(data) {
 		models.User.findOne({
 			where: data,

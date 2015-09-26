@@ -13,20 +13,22 @@ module.exports = function (sequelize, DataTypes) {
 		password: DataTypes.STRING,
 		nickname: DataTypes.STRING,
 		avatar: DataTypes.STRING
-	});
-
-	/**
-	 * Process data user to compare ...
-	 * @param data
-	 * @returns {*}
-	 */
-	sequelize.processUser = function(data){
-		if(data.email && data.password) {
-			data.password = require('../modules').helper.enCodeUnique(data.password);
-			//data.nickname = 'Anonymous';
-			return data;
+	},{
+		classMethods: {
+			/**
+			 * Process data user to compare ...
+			 * @param data
+			 * @returns {*}
+			 */
+			processUser: function(data){
+				if(data.email && data.password) {
+					data.password = require('../modules').helper.enCodeUnique(data.password);
+					//data.nickname = 'Anonymous';
+					return data;
+				}
+				return false;
+			}
 		}
-		return false;
-	};
+	});
 	return User;
 };

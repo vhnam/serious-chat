@@ -2,7 +2,9 @@
  * List user of chat ROOM.
  * @type {{}}
  */
-var users = [];
+var users = [],
+    models = require('../models');
+
 var _io = function (http, app, port) {
     var io, server;
     if (!(app && port && http)) {
@@ -48,7 +50,7 @@ var _io = function (http, app, port) {
                 socket.nickname = user.nickname;
                 socket.avatar = user.avatar;
                 users[getUnique(user.email)] = socket;
-                io.sockets.emit('new user connect', {unique: getUnique(), nickname: user.nickname, avatar: user.avatar});
+                io.sockets.emit('newUserConnect', {unique: getUnique(), nickname: user.nickname, avatar: user.avatar});
             }else{
                 //User connect again.......
             }
@@ -90,15 +92,25 @@ var _io = function (http, app, port) {
          * Event for send message
          * data = {
          *  .unique group,
-         *  .unique send,
-         *  .nickname,
-         *  .avatar,
+         *  .user: {
+         *      .unique send,
+         *      .nickname,
+         *      .avatar,
+         *  },
          *  .message
          * }
          */
         socket.on('sendMessage',function(data){
             //Code logic here.
-
+            if(data.message && data.user.nickname){
+                /*users.forEach(function(index, elemetn){
+                    if(index != data.user.unique) {
+                        console.log("New message: "+ data.message);
+                        elemetn.emit('newMessage', data);
+                    }
+                });*/
+                io.sockets.emit('newMessage', data);
+            }
         });
 
         socket.on('disconnect', function () {
