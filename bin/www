@@ -4,10 +4,11 @@ var modules = require('../modules')
 	app = require('../app'),
 	debug = require('debug')('serious-chat:server'),
 	http = require('http'),
+		ipPort = 80,
 	models = require('../models');
 
 // get port from environment and store in Express.
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || ipPort);
 //app.set('port', port);
 
 // create HTTP Server

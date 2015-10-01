@@ -29,11 +29,7 @@
         <div layout="column" tabIndex="-1" role="main" flex>
             <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar main-header" ng-class="{isSearching: isSearching}">
                 <div class="md-toolbar-tools">
-<<<<<<< .mine
-                    <md-button class="md-icon-button menu" hide-gt-sm aria-label="Toggle Menu" ng-click="showMenu()">
-=======
                      <md-button class="md-icon-button menu" hide-gt-sm aria-label="Toggle Menu" ng-click="showSidenav()">
->>>>>>> .theirs
                         <md-icon md-svg-icon="img/menu.svg"></md-icon>
                     </md-button>
                     {{!-- Search form --}}
@@ -52,31 +48,17 @@
             </md-toolbar>
             <md-content md-scroll-y flex layout-padding>
                 <md-content class="md-default-theme chat">
-                    <div class="chat-content"></div>
-                    <!--<div class="chat-content"> Code cua Nam
-                        {{!--<message ng-repeat="message in messages"
+                    <div class="chat-content">
+                        <message ng-repeat="message in messages"
                                 avatar="[[message.user.avatar]]"
                                 nickname="[[message.user.nickname]]"
                                 isme="[[message.user.isme]]"
-                                content="[[message.content]]"/>--}}
-                    </div>-->
+                                content="[[message.content]]"/>
+                    </div>
                 </md-content>
             </md-content>
             <div class="chat-box">
-                <form name="frmSendMsg" ng-submit="frmSendMsg.$valid && sendMessage()" class="frmSendMessage">
-                    <textarea name="chat-box" ng-model="message" placeholder="Write a message..." ng-required="true" ng-keypress="submitForm($event)">
-                    </textarea>
-                    <div class="chat-toolbar">
-                        <md-button class="md-icon-button" aria-label="Emotion">
-                            <md-icon md-svg-icon="img/face.svg"></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button" aria-label="Send">
-                            <md-icon md-svg-icon="img/send.svg"></md-icon>
-                        </md-button>
-                    </div>
-                </form>
-                <!--Code cua Nam-->
-                <!--<textarea name="chat-box" ng-model="message" placeholder="Write a message..." ng-enter="sendMessage()">
+                <textarea name="chat-box" ng-model="message" placeholder="Write a message..." ng-enter="sendMessage()">
                 </textarea>
                 <div class="chat-toolbar">
                     <md-button class="md-icon-button" aria-label="Emotion">
@@ -85,7 +67,7 @@
                     <md-button class="md-icon-button" aria-label="Send" ng-click="sendMessage()">
                         <md-icon md-svg-icon="img/send.svg"></md-icon>
                     </md-button>
-                </div>-->
+                </div>
             </div>
         </div>
     </section>

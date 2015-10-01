@@ -63,7 +63,7 @@ angular.module('serious-chat', ['ngMaterial'])
 				socket.emit(eventName, data, function () {
 					var args = arguments;
 					$rootScope.$apply(function () {
-						if(callback) {
+						if (callback) {
 							callback.apply(socket, args);
 						}
 					});
@@ -72,12 +72,13 @@ angular.module('serious-chat', ['ngMaterial'])
 		}
 	}])
 
+	// ngEnter directive
 	.directive('ngEnter', function() {
         return function(scope, element, attrs) {
             element.bind("keydown keypress", function(event) {
                 if(event.which === 13) {
                     scope.$apply(function(){
-                            scope.$eval(attrs.ngEnter);
+                        scope.$eval(attrs.ngEnter);
                     });
                     event.preventDefault();
                 }
@@ -103,11 +104,15 @@ angular.module('serious-chat', ['ngMaterial'])
 
 	// Main Controller
 	.controller('mainController', ['$scope', '$mdSidenav', 'socket', function($scope, $mdSidenav, socket) {
+		$(window).on('beforeunload', function(){
+		    socket.close();
+		});
+
 		$scope.user = {};
 
 		$scope.stop = false;
-		// Messages of users
 
+		// Messages of users
 		$scope.messages = [];
 
 		$scope.message = '';
@@ -139,75 +144,26 @@ angular.module('serious-chat', ['ngMaterial'])
 		}
 
 
-		/**
-		 * Send message
-		 *
-		 *<div class="chat-post">
-		 *     <img src="img/anonymous-face.png" alt="User" class="chat-avatar">
-		 *     <span class="post-content">
-		 *        <h4 class="post-nickname">Harry James</h4>
-		 *        Color in material design is inspired by bold hues juxtaposed with muted environments, deep shadows, and bright highlights. Material takes cues from contemporary architecture, road signs, pavement marking tape, and athletic courts. Color should be unexpected and vibrant.
-		 *     </span>
-		 *</div>
-		 *<div class="clear"></div>
-		 *<div class="chat-post">
-		 *   <span class="post-content me">
-		 *     Treehouse is where you go to learn HTML, CSS, and how to build iOS apps.
-		 *     </span>
-		 *</div>
-		 */
-		$scope.sendMessage = function () {
-			var message = $scope.message;
-			$scope.stop = true;
-			if (message) {
-				socket.emit('sendMessage', {user: $scope.user, message: message});
-				$('.chat-content').append('<div class="clear"></div>');
-				var msgHtml = '<div class="chat-post">' +
-					'<span class="post-content me">' + message + '</span></div>';
-				$('.chat-content').append(msgHtml);
+		$scope.sendMessage = function() {
+			if ($scope.message) {
+				socket.emit('sendMessage', {
+					user: $scope.user,
+					message: $scope.message
+				});
+
+				$scope.messages.push({
+					user: {
+						avatar: ($scope.user.avatar) ? $scope.user.avatar : 'anonymous-face.png',
+						nickname: $scope.user.nickname,
+						isme: 'me'
+					},
+					content: $scope.message
+				});
+
 				$scope.message = '';
-				if ($('.chat-content>div').length > 3) {
-					$('.md-default-theme').scrollTop(($('.chat-content')[0]).lastChild.offsetTop);
-				}
 			}
-		};
+		}
 
-		$scope.submitForm = function (event) {
-			if (event.which == 13 || event.keyCode == 13) {
-				event.preventDefault();
-				$scope.sendMessage();
-			}
-		};
-
-		/*
-		Code cua nam
-		$scope.messages.push({
-			user: {
-				avatar: ($scope.user.avatar) ? $scope.user.avatar : 'anonymous-face.png',
-				nickname: $scope.user.nickname,
-				isme: 'me'
-			},
-			content: $scope.message
-		});
-		$scope.message = '';*/
-
-		$scope.sendMsg = function(message){
-			if(message) {
-				socket.emit('sendMessage', {user: $scope.user, message: message});
-				$('.chat-content').append('<div class="clear"></div>');
-				var msgHtml = '<div class="chat-post">' +
-					'<span class="post-content me">' + message + '</span></div>';
-				$('.chat-content').append(msgHtml);
-				if($('.chat-content>div').length > 3) {
-					$('.md-default-theme').scrollTop(($('.chat-content')[0]).lastChild.offsetTop);
-				}
-				setTimeout(function(){
-					if(!$scope.stop) {
-						$scope.sendMsg("TEST CAC KIEU");
-					}
-				},100);
-			}
-		};
 		socket.on('newUserConnect', function (data) {
 			if(!$scope.user.unique) {
 				$scope.user = data;
@@ -215,31 +171,18 @@ angular.module('serious-chat', ['ngMaterial'])
 		});
 
 		socket.emit('newLogin', $scope.user);
-		//$scope.sendMsg("TEST HAM NAM");
 
-
-		/**
-		 * Function new message
-		 * data {
-		 *     .user {
-		 *     		.unique,
-		 *     		.nickname,
-		 	*     	.avatar
-		 *     },
-		 *     .message
-		 * }
-		 */
 		socket.on('newMessage', function (data) {
-			if(data.user.unique != $scope.user.unique) {
-				$('.chat-content').append('<div class="clear"></div>');
-				var msgHtml = '<div class="chat-post">' +
-					'<img src="img/anonymous-face.png" alt="User" class="chat-avatar">' +
-					'<span class="post-content">' +
-					'<h4 class="post-nickname">' + data.user.nickname + '</h4>' + data.message + '</span></div>';
-				$('.chat-content').append(msgHtml);
-				if($('.chat-content>div').length > 3) {
-					$('.md-default-theme').scrollTop(($('.chat-content')[0]).lastChild.offsetTop);
-				}
+			$scope.messages.push({
+				user: {
+					avatar: (data.user.avatar) ? data.user.avatar : 'anonymous-face.png',
+					nickname: data.user.nickname
+				},
+				content: data.message
+			});
+
+			if ($('.chat-content > div').length > 3) {
+				$('.md-default-theme').scrollTop(($('.chat-content')[0]).lastChild.offsetTop);
 			}
 		});
 	}])
