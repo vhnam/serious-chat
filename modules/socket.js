@@ -101,6 +101,7 @@ var _io = function (http, app, port) {
          * }
          */
         socket.on('sendMessage',function(data){
+            console.log(data);
             //Code logic here.
             if(data.message && data.user.nickname){
                 /*users.forEach(function(index, elemetn){
