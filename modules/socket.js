@@ -20,6 +20,7 @@ var _io = function (http, app, port) {
     io.on('connection', function (socket) {
         var isNewUser = false, uniqueName;
         //console.log('A user connected');
+
         /**
          * Create unique id with email or string input
          * @param email
@@ -49,7 +50,8 @@ var _io = function (http, app, port) {
                 socket.email = user.email;
                 socket.nickname = user.nickname;
                 socket.avatar = user.avatar;
-                users[getUnique(user.email)] = socket;
+                socket.unique = getUnique(user.email);
+                users.push(socket);
                 io.sockets.emit('newUserConnect', {unique: getUnique(), nickname: user.nickname, avatar: user.avatar});
             }else{
                 //User connect again.......
@@ -103,13 +105,13 @@ var _io = function (http, app, port) {
         socket.on('sendMessage',function(data){
             //Code logic here.
             if(data.message && data.user.nickname){
-                /*users.forEach(function(index, elemetn){
-                    if(index != data.user.unique) {
+                users.forEach(function(index, element){
+                    if(element.unique != data.user.unique) {
                         console.log("New message: "+ data.message);
-                        elemetn.emit('newMessage', data);
+                        element.emit('newMessage', data);
                     }
-                });*/
-                io.sockets.emit('newMessage', data);
+                });
+                //io.sockets.emit('newMessage', data);
             }
         });
 

@@ -109,6 +109,7 @@ angular.module('serious-chat', ['ngMaterial'])
 		// Messages of users
 
 		$scope.messages = [];
+
 		$scope.message = '';
 
 		/**
@@ -214,7 +215,9 @@ angular.module('serious-chat', ['ngMaterial'])
 		});
 
 		socket.emit('newLogin', $scope.user);
-		$scope.sendMsg("TEST HAM N�");
+		//$scope.sendMsg("TEST HAM NAM");
+
+
 		/**
 		 * Function new message
 		 * data {
